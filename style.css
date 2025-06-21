@@ -195,3 +195,35 @@ footer p {
         width: 90%;
     }
 }
+
+/* 🎯 Página do Bot */
+.bot-page-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.bot-page-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.bot-page-content h2 {
+    margin-top: 10px;
+}
+
+.bot-page-content p {
+    margin-bottom: 10px;
+}
+
+.bot-page-content .headline {
+    font-weight: bold;
+    color: #0077ff;
+}
+
+body.dark .bot-page-content .headline {
+    color: #66aaff;
+}
