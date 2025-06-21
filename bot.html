@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot | BotList</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🔝 Header -->
+    <header>
+        <h1>BotList</h1>
+    </header>
+
+    <!-- 🧠 Conteúdo do bot -->
+    <div id="bot-container">
+        <p>Carregando informações do bot...</p>
+    </div>
+
+    <!-- ⚙️ Footer -->
+    <footer>
+        <button id="toggleTheme">🌗 Mudar Tema</button>
+        <p>&copy; 2025 BotList - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // 🌗 Botão de mudar tema
+        const toggleThemeBtn = document.getElementById('toggleTheme');
+        toggleThemeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+
+        // 🔥 Pega o parâmetro da URL
+        const params = new URLSearchParams(window.location.search);
+        const botName = params.get('nome');
+
+        const botContainer = document.getElementById('bot-container');
+
+        // 🔗 Puxa os dados do bots.json
+        fetch('bots.json')
+            .then(res => res.json())
+            .then(bots => {
+                const bot = bots.find(b => b.nome.toLowerCase() === botName.toLowerCase());
+
+                if (bot) {
+                    botContainer.innerHTML = `
+                        <div class="bot-page-card">
+                            <div class="bot-banner" style="background-image: url('${bot.plano_fundo}')"></div>
+                            <div class="bot-page-content">
+                                <img src="${bot.foto}" alt="${bot.nome}" class="bot-avatar">
+                                <h2>${bot.nome}</h2>
+                                <p class="headline">${bot.headline}</p>
+                                <p>${bot.descricao}</p>
+                                <a href="${bot.link_convite}" target="_blank" class="invite-btn">➕ Adicionar Bot</a>
+
+                                <div class="bot-info">
+                                    <p><strong>Dono:</strong> ${bot.dono}</p>
+                                    <p><strong>Data de Criação:</strong> ${bot.data_criacao}</p>
+                                    <p><strong>Data de Envio:</strong> ${bot.data_envio}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    botContainer.innerHTML = `
+                        <h2>❌ Bot não encontrado!</h2>
+                        <p>Verifique se o nome está correto na URL.</p>
+                        <a href="/" class="invite-btn">⬅️ Voltar</a>
+                    `;
+                }
+            })
+            .catch(error => {
+                botContainer.innerHTML = `
+                    <h2>⚠️ Erro ao carregar dados.</h2>
+                    <p>${error}</p>
+                `;
+            });
+    </script>
+</body>
+</html>
