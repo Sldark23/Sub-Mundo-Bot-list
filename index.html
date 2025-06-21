@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sub Mundo BotList</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BotList</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
+    <h1>BotList</h1>
+  </header>
 
-    <header>
-        <h1>Sub Mundo BotList</h1>
-    </header>
+  <div id="pesquisa-bots">
+    <input type="text" id="searchInput" placeholder="Pesquisar bots..." />
+  </div>
 
-    <!-- 🔍 Barra de pesquisa -->
-    <div id="pesquisa-bots">
-        <input type="text" id="searchInput" placeholder="Pesquisar bots...">
-    </div>
+  <div id="bots-list">
+    <!-- Bots carregados aqui via script.js -->
+  </div>
 
-    <!-- 📜 Lista de bots -->
-    <div id="bots-list">
-        <!-- Os bots aparecem aqui -->
-    </div>
+  <footer>
+    <button id="toggleTheme">🌗 Mudar Tema</button>
+    <p>&copy; 2025 BotList - Todos os direitos reservados</p>
+  </footer>
 
-    <!-- ⚙️ Footer -->
-    <footer>
-        <button id="toggleTheme">Mudar Tema</button>
-        <p>&copy; 2025 BotList - Todos os direitos reservados</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-          </html>
+</html>
